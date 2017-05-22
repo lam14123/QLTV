@@ -10,7 +10,7 @@ namespace QLTV.Model
 {
     class Sach
     {
-        SqlConnection con = new SqlConnection("server=HP6460B-PC\\SQLEXPRESS;database=QLTV;integrated security=SSPI");
+        SqlConnection con = new SqlConnection("Data Source=QUYETTHANG;Initial Catalog=QLTV;Integrated Security=True");
         //SqlConnection con = new SqlConnection(@"Data Source=SUPER\SQLEXPRESS ;Initial Catalog=TTN_Quanlythuvien ;Persist Security Info=True; User ID=detai6 ;Password=detai6 ");
         public string id { get; set; }
         public string ten { get; set; }

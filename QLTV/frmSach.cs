@@ -14,6 +14,7 @@ namespace QLTV
 {
     public partial class frmSach : Form
     {
+        SqlConnection con = new SqlConnection("Data Source=QUYETTHANG;Initial Catalog=QLTV;Integrated Security=True");
         public frmSach()
         {
             InitializeComponent();
@@ -53,7 +54,36 @@ namespace QLTV
         //TÌM KIẾM BẰNG SỰ KIỆN TEXTCHANGED (THEO MÃ SÁCH, TÊN SÁCH, TÁC GIẢ).
         private void txtb_tim_TextChanged(object sender, EventArgs e)
         {
-
+            if (cb_tim.Text == "Mã sách")
+            {
+                con.Open();
+                string tk = "select * from Sach where id like '%" + txtb_tim.Text.Trim() + "%' ";
+                SqlDataAdapter add = new SqlDataAdapter(tk, con);
+                DataTable dta = new DataTable();
+                add.Fill(dta);
+                dataGridView1.DataSource = dta;
+                con.Close();
+            }
+            if (cb_tim.Text == "Tên sách")
+            {
+                con.Open();
+                string tk = "select * from Sach where ten like N'%" + txtb_tim.Text.Trim() + "%' ";
+                SqlDataAdapter add = new SqlDataAdapter(tk, con);
+                DataTable dta = new DataTable();
+                add.Fill(dta);
+                dataGridView1.DataSource = dta;
+                con.Close();
+            }
+            if (cb_tim.Text == "Tác Giả")
+            {
+                con.Open();
+                string tk = "select * from Sach where tacgia like N'%" + txtb_tim.Text.Trim() + "%' ";
+                SqlDataAdapter add = new SqlDataAdapter(tk, con);
+                DataTable dta = new DataTable();
+                add.Fill(dta);
+                dataGridView1.DataSource = dta;
+                con.Close();
+            }
         }
 
         //THÊM ĐẦU SÁCH MỚI.

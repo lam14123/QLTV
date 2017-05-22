@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -11,8 +12,11 @@ using System.Windows.Forms;
 
 namespace QLTV
 {
+   
     public partial class frmDocgia : Form
     {
+        SqlConnection con = new SqlConnection("Data Source=QUYETTHANG;Initial Catalog=QLTV;Integrated Security=True");
+
         public frmDocgia()
         {
             InitializeComponent();
@@ -34,6 +38,27 @@ namespace QLTV
         //TÌM KIẾM BẰNG SỰ KIỆN TEXT CHANGED (THEO CMND, TÊN ĐỘC GIẢ)
         private void txtb_tim_TextChanged(object sender, EventArgs e)
         {
+            if (cb_tim.Text== "CMND")
+            {
+                con.Open();
+                string tk = "select * from Docgia where cmnd like '%" + txtb_tim.Text.Trim() + "%' ";
+                SqlDataAdapter add = new SqlDataAdapter(tk, con);
+                DataTable dta = new DataTable();
+                add.Fill(dta);
+                dataGridView1.DataSource = dta;
+                con.Close();
+            }
+            if (cb_tim.Text == "Họ và Tên")
+            {
+                con.Open();
+                string tk = "select * from Docgia where ten like N'%" + txtb_tim.Text.Trim() + "%' ";
+                SqlDataAdapter add = new SqlDataAdapter(tk, con);
+                DataTable dta = new DataTable();
+                add.Fill(dta);
+                dataGridView1.DataSource = dta;
+                con.Close();
+            }
+
 
         }
 
