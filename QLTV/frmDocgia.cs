@@ -52,22 +52,23 @@ namespace QLTV
         //XÓA ĐỘC GIẢ ĐA CHỌN.
         private void btn_xoa_Click(object sender, EventArgs e)
         {
+            int kt;
             if (dataGridView1.SelectedRows.Count <= 0)
             {
                 MessageBox.Show("Chưa chọn độc giả");
                 return;
             }
             Docgia drview = (Docgia)dataGridView1.SelectedRows[0].DataBoundItem;
-            int kt = drview.Xoa(drview.cmnd);
+            DialogResult dlr = MessageBox.Show("Bạn có chắc muốn xóa độc giả này ?", "Cảnh báo", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            if (dlr == DialogResult.Yes) kt = drview.Xoa(drview.cmnd);
+            else return;
             if (kt == 1)
             {
-
-                MessageBox.Show("Xóa thành công !");
                 frmDocgia_Load(sender, e);
             }
             else
             {
-                MessageBox.Show("Lỗi thực thi !");
+                MessageBox.Show("Không thể xóa ! độc giả này có quan hệ với các bảng khác !");
             }
         }
     }
