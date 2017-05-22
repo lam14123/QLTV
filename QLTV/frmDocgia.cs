@@ -52,7 +52,23 @@ namespace QLTV
         //XÓA ĐỘC GIẢ ĐA CHỌN.
         private void btn_xoa_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.SelectedRows.Count <= 0)
+            {
+                MessageBox.Show("Chưa chọn độc giả");
+                return;
+            }
+            Docgia drview = (Docgia)dataGridView1.SelectedRows[0].DataBoundItem;
+            int kt = drview.Xoa(drview.cmnd);
+            if (kt == 1)
+            {
 
+                MessageBox.Show("Xóa thành công !");
+                frmDocgia_Load(sender, e);
+            }
+            else
+            {
+                MessageBox.Show("Lỗi thực thi !");
+            }
         }
     }
 }

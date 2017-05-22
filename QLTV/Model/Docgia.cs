@@ -11,7 +11,7 @@ namespace QLTV.Model
     class Docgia
     {
         SqlConnection con = new SqlConnection("server=HP6460B-PC\\SQLEXPRESS;database=QLTV;integrated security=SSPI");
-
+        //SqlConnection con = new SqlConnection(@"Data Source=SUPER\SQLEXPRESS ;Initial Catalog=TTN_Quanlythuvien ;Persist Security Info=True; User ID=detai6 ;Password=detai6 ");
         public string cmnd { get; set; }
         public string ten { get; set; }
         public string ngaysinh { get; set; }
@@ -63,14 +63,22 @@ namespace QLTV.Model
             con.Close();
         }
 
-        public void Xoa(string cmnd)
+        public int Xoa(string id)
         {
-            if (con.State != ConnectionState.Open)
+            try
+            {
                 con.Open();
-            SqlCommand sc = new SqlCommand("xoa_docgia", con);
-            sc.Parameters.Add(new SqlParameter("id", cmnd));
-            sc.ExecuteNonQuery();
-            con.Close();
+                SqlCommand cm = new SqlCommand("DELETE FROM [dbo].[Docgia] WHERE cmnd=@id", con);
+                cm.Parameters.Add("@id", SqlDbType.NVarChar).Value = id;
+                cm.ExecuteNonQuery();
+                con.Close();
+                return 1;
+            }
+            catch
+            {
+                return 0;
+            }
+
         }
 
         public void Sua(Docgia docgia, string current_cmnd)
