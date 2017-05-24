@@ -77,6 +77,7 @@ namespace QLTV
         //XÓA ĐỘC GIẢ ĐA CHỌN.
         private void btn_xoa_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             int kt;
             if (dataGridView1.SelectedRows.Count <= 0)
             {
@@ -95,6 +96,9 @@ namespace QLTV
             {
                 MessageBox.Show("Không thể xóa ! độc giả này có quan hệ với các bảng khác !");
             }
+=======
+
+>>>>>>> parent of 1e8fe68... dong
         }
     }
 }
