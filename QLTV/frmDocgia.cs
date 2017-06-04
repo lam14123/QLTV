@@ -15,7 +15,8 @@ namespace QLTV
    
     public partial class frmDocgia : Form
     {
-        SqlConnection con = new SqlConnection("Data Source=QUYETTHANG;Initial Catalog=QLTV;Integrated Security=True");
+        //SqlConnection con = new SqlConnection("Data Source=QUYETTHANG;Initial Catalog=QLTV;Integrated Security=True");
+        SqlConnection con = new SqlConnection("server=HP6460B-PC\\SQLEXPRESS;database=QLTV;integrated security=SSPI");
 
         public frmDocgia()
         {
@@ -33,6 +34,21 @@ namespace QLTV
         private void frmDocgia_Load(object sender, EventArgs e)
         {
             Docgia_hienthi();
+        }
+
+        //ĐƯA DỮ LIỆU RA TEXTBOX KHI CLICK VÀO DATAGRIDVIEW.
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtb_cmnd.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            txtb_ten.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            dateTimePicker1.Value = DateTime.Parse(dataGridView1.CurrentRow.Cells[2].Value.ToString());
+            rtxtb_diachi.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+            if (dataGridView1.CurrentRow.Cells[4].Value.ToString() == "Nam")
+                rbtn_nam.Checked = true;
+            else
+                rbtn_nu.Checked = true;
+            txtb_taikhoan.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
+            txtb_matkhau.Text = dataGridView1.CurrentRow.Cells[6].Value.ToString();
         }
 
         //TÌM KIẾM BẰNG SỰ KIỆN TEXT CHANGED (THEO CMND, TÊN ĐỘC GIẢ)
@@ -71,14 +87,26 @@ namespace QLTV
         //CẬP NHẬT THÔNG TIN ĐỘC GIẢ ĐÃ CHỌN.
         private void btn_sua_Click(object sender, EventArgs e)
         {
-
+            string curr_id = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            Docgia dg = new Docgia();
+            dg.cmnd = txtb_cmnd.Text;
+            dg.ten = txtb_ten.Text;
+            dg.ngaysinh = dateTimePicker1.Value.ToString("MM-dd-yyyy");
+            dg.diachi = rtxtb_diachi.Text;
+            if (rbtn_nam.Checked == true)
+                dg.gioitinh = "Nam";
+            else
+                dg.gioitinh = "Nữ";
+            dg.taikhoan = txtb_taikhoan.Text;
+            dg.matkhau = txtb_matkhau.Text;
+            dg.Sua(dg, curr_id);
+            MessageBox.Show("Cập nhật thành công!");
+            frmDocgia_Load(sender, e);
         }
 
         //XÓA ĐỘC GIẢ ĐA CHỌN.
         private void btn_xoa_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
-            int kt;
             if (dataGridView1.SelectedRows.Count <= 0)
             {
                 MessageBox.Show("Chưa chọn độc giả");
@@ -86,19 +114,12 @@ namespace QLTV
             }
             Docgia drview = (Docgia)dataGridView1.SelectedRows[0].DataBoundItem;
             DialogResult dlr = MessageBox.Show("Bạn có chắc muốn xóa độc giả này ?", "Cảnh báo", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-            if (dlr == DialogResult.Yes) kt = drview.Xoa(drview.cmnd);
+            if (dlr == DialogResult.Yes)
+                drview.Xoa(drview.cmnd);
             else return;
-            if (kt == 1)
-            {
-                frmDocgia_Load(sender, e);
-            }
-            else
-            {
-                MessageBox.Show("Không thể xóa ! độc giả này có quan hệ với các bảng khác !");
-            }
-=======
+            frmDocgia_Load(sender, e);
 
->>>>>>> parent of 1e8fe68... dong
+            
         }
     }
 }

@@ -14,7 +14,9 @@ namespace QLTV
 {
     public partial class frmSach : Form
     {
-        SqlConnection con = new SqlConnection("Data Source=QUYETTHANG;Initial Catalog=QLTV;Integrated Security=True");
+        //SqlConnection con = new SqlConnection("Data Source=QUYETTHANG;Initial Catalog=QLTV;Integrated Security=True");
+        SqlConnection con = new SqlConnection("server=HP6460B-PC\\SQLEXPRESS;database=QLTV;integrated security=SSPI");
+
         public frmSach()
         {
             InitializeComponent();
@@ -54,36 +56,34 @@ namespace QLTV
         //TÌM KIẾM BẰNG SỰ KIỆN TEXTCHANGED (THEO MÃ SÁCH, TÊN SÁCH, TÁC GIẢ).
         private void txtb_tim_TextChanged(object sender, EventArgs e)
         {
+            if (con.State != ConnectionState.Open)
+                con.Open();
+
             if (cb_tim.Text == "Mã sách")
             {
-                con.Open();
                 string tk = "select * from Sach where id like '%" + txtb_tim.Text.Trim() + "%' ";
                 SqlDataAdapter add = new SqlDataAdapter(tk, con);
                 DataTable dta = new DataTable();
                 add.Fill(dta);
                 dataGridView1.DataSource = dta;
-                con.Close();
             }
             if (cb_tim.Text == "Tên sách")
             {
-                con.Open();
                 string tk = "select * from Sach where ten like N'%" + txtb_tim.Text.Trim() + "%' ";
                 SqlDataAdapter add = new SqlDataAdapter(tk, con);
                 DataTable dta = new DataTable();
                 add.Fill(dta);
                 dataGridView1.DataSource = dta;
-                con.Close();
             }
             if (cb_tim.Text == "Tác Giả")
             {
-                con.Open();
                 string tk = "select * from Sach where tacgia like N'%" + txtb_tim.Text.Trim() + "%' ";
                 SqlDataAdapter add = new SqlDataAdapter(tk, con);
                 DataTable dta = new DataTable();
                 add.Fill(dta);
                 dataGridView1.DataSource = dta;
-                con.Close();
             }
+            con.Close();
         }
 
         //THÊM ĐẦU SÁCH MỚI.
@@ -95,34 +95,36 @@ namespace QLTV
         //CẬP NHẬT LẠI THÔNG TIN ĐẦU SÁCH ĐÃ CHỌN.
         private void btn_sua_Click(object sender, EventArgs e)
         {
-
+            string curr_id = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            Sach sc = new Sach();
+            sc.id = txtb_id.Text;
+            sc.ten = txtb_ten.Text;
+            if (txtb_soluong.Text != "")
+                sc.soluong = int.Parse(txtb_soluong.Text);
+            else
+                sc.soluong = 0;
+            sc.tacgia = txtb_tacgia.Text;
+            sc.theloai = txtb_theloai.Text;
+            sc.nxb = txtb_nxb.Text;
+            sc.Sua(sc, curr_id);
+            MessageBox.Show("Cập nhật thành công!");
+            frmSach_Load(sender, e);
         }
 
         //XÓA ĐẦU SÁCH ĐÃ CHỌN.
         private void btn_xoa_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
-            int kt;
             if (dataGridView1.SelectedRows.Count <= 0)
             {
-                MessageBox.Show("Chưa chọn sách");
+                MessageBox.Show("Chưa chọn đầu sách!");
                 return;
             }
             Sach drview = (Sach)dataGridView1.SelectedRows[0].DataBoundItem;
-            DialogResult dlr = MessageBox.Show("Bạn có chắc muốn xóa cuốn sách này ?", "Cảnh báo", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-            if (dlr == DialogResult.Yes) kt = drview.Xoa(drview.id);
+            DialogResult dlr = MessageBox.Show("Bạn có chắc muốn xóa đầu sách này ?", "Cảnh báo", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            if (dlr == DialogResult.Yes)
+                drview.Xoa(drview.id);
             else return;
-            if (kt==1)
-            {
-                frmSach_Load(sender, e);
-            }
-            else
-            {
-                MessageBox.Show("Không thể xóa ! cuốn sách này có quan hệ với các bảng khác !");
-            }
-=======
-
->>>>>>> parent of 1e8fe68... dong
+            frmSach_Load(sender, e);
         }
     }
 }

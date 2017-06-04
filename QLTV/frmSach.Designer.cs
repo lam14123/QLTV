@@ -167,7 +167,6 @@
             // 
             // txtb_ten
             // 
-            this.txtb_ten.Enabled = false;
             this.txtb_ten.Location = new System.Drawing.Point(147, 140);
             this.txtb_ten.Name = "txtb_ten";
             this.txtb_ten.Size = new System.Drawing.Size(231, 20);

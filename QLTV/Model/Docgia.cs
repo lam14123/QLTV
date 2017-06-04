@@ -10,14 +10,11 @@ namespace QLTV.Model
 {
     class Docgia
     {
-<<<<<<< HEAD
-        //SqlConnection con = new SqlConnection("server=HP6460B-PC\\SQLEXPRESS;database=QLTV;integrated security=SSPI");
-        SqlConnection con = new SqlConnection("Data Source=QUYETTHANG;Initial Catalog=QLTV;Integrated Security=True");
+        //SqlConnection con = new SqlConnection("Data Source=QUYETTHANG;Initial Catalog=QLTV;Integrated Security=True");
         //SqlConnection con = new SqlConnection(@"Data Source=SUPER\SQLEXPRESS ;Initial Catalog=TTN_Quanlythuvien ;Persist Security Info=True; User ID=detai6 ;Password=detai6 ");
-=======
+
         SqlConnection con = new SqlConnection("server=HP6460B-PC\\SQLEXPRESS;database=QLTV;integrated security=SSPI");
 
->>>>>>> parent of 1e8fe68... dong
         public string cmnd { get; set; }
         public string ten { get; set; }
         public string ngaysinh { get; set; }
