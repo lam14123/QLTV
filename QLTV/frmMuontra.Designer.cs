@@ -30,9 +30,9 @@
         {
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtb_nxb = new System.Windows.Forms.TextBox();
+            this.txtb_tensach = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtb_theloai = new System.Windows.Forms.TextBox();
+            this.txtb_masach = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtb_ten = new System.Windows.Forms.TextBox();
@@ -44,13 +44,14 @@
             this.txtb_tim = new System.Windows.Forms.TextBox();
             this.cb_tim = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtb_id = new System.Windows.Forms.TextBox();
+            this.txtb_cmnd = new System.Windows.Forms.TextBox();
             this.grb1 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dtMuontra = new System.Windows.Forms.DataGridView();
             this.dtp_ngaymuon = new System.Windows.Forms.DateTimePicker();
             this.dtp_hantra = new System.Windows.Forms.DateTimePicker();
+            this.bntClear = new System.Windows.Forms.Button();
             this.grb1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtMuontra)).BeginInit();
             this.SuspendLayout();
             // 
             // label8
@@ -77,13 +78,13 @@
             this.label7.TabIndex = 27;
             this.label7.Text = "Hạn trả";
             // 
-            // txtb_nxb
+            // txtb_tensach
             // 
-            this.txtb_nxb.Enabled = false;
-            this.txtb_nxb.Location = new System.Drawing.Point(507, 141);
-            this.txtb_nxb.Name = "txtb_nxb";
-            this.txtb_nxb.Size = new System.Drawing.Size(229, 20);
-            this.txtb_nxb.TabIndex = 26;
+            this.txtb_tensach.Enabled = false;
+            this.txtb_tensach.Location = new System.Drawing.Point(507, 141);
+            this.txtb_tensach.Name = "txtb_tensach";
+            this.txtb_tensach.Size = new System.Drawing.Size(229, 20);
+            this.txtb_tensach.TabIndex = 26;
             // 
             // label6
             // 
@@ -98,12 +99,12 @@
             this.label6.Text = "Tên Sách";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // txtb_theloai
+            // txtb_masach
             // 
-            this.txtb_theloai.Location = new System.Drawing.Point(507, 96);
-            this.txtb_theloai.Name = "txtb_theloai";
-            this.txtb_theloai.Size = new System.Drawing.Size(229, 20);
-            this.txtb_theloai.TabIndex = 24;
+            this.txtb_masach.Location = new System.Drawing.Point(507, 96);
+            this.txtb_masach.Name = "txtb_masach";
+            this.txtb_masach.Size = new System.Drawing.Size(229, 20);
+            this.txtb_masach.TabIndex = 24;
             // 
             // label5
             // 
@@ -163,7 +164,7 @@
             // 
             // btn_xoa
             // 
-            this.btn_xoa.Location = new System.Drawing.Point(688, 16);
+            this.btn_xoa.Location = new System.Drawing.Point(731, 16);
             this.btn_xoa.Name = "btn_xoa";
             this.btn_xoa.Size = new System.Drawing.Size(75, 23);
             this.btn_xoa.TabIndex = 3;
@@ -173,7 +174,7 @@
             // 
             // btn_sua
             // 
-            this.btn_sua.Location = new System.Drawing.Point(595, 16);
+            this.btn_sua.Location = new System.Drawing.Point(638, 16);
             this.btn_sua.Name = "btn_sua";
             this.btn_sua.Size = new System.Drawing.Size(75, 23);
             this.btn_sua.TabIndex = 3;
@@ -183,7 +184,7 @@
             // 
             // btn_them
             // 
-            this.btn_them.Location = new System.Drawing.Point(499, 16);
+            this.btn_them.Location = new System.Drawing.Point(542, 16);
             this.btn_them.Name = "btn_them";
             this.btn_them.Size = new System.Drawing.Size(75, 23);
             this.btn_them.TabIndex = 3;
@@ -225,16 +226,17 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Tìm kiếm";
             // 
-            // txtb_id
+            // txtb_cmnd
             // 
-            this.txtb_id.Location = new System.Drawing.Point(151, 96);
-            this.txtb_id.Name = "txtb_id";
-            this.txtb_id.Size = new System.Drawing.Size(231, 20);
-            this.txtb_id.TabIndex = 18;
+            this.txtb_cmnd.Location = new System.Drawing.Point(151, 96);
+            this.txtb_cmnd.Name = "txtb_cmnd";
+            this.txtb_cmnd.Size = new System.Drawing.Size(231, 20);
+            this.txtb_cmnd.TabIndex = 18;
             // 
             // grb1
             // 
             this.grb1.BackColor = System.Drawing.Color.Transparent;
+            this.grb1.Controls.Add(this.bntClear);
             this.grb1.Controls.Add(this.btn_xoa);
             this.grb1.Controls.Add(this.btn_sua);
             this.grb1.Controls.Add(this.btn_them);
@@ -248,16 +250,17 @@
             this.grb1.TabIndex = 16;
             this.grb1.TabStop = false;
             // 
-            // dataGridView1
+            // dtMuontra
             // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 286);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(813, 217);
-            this.dataGridView1.TabIndex = 15;
+            this.dtMuontra.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtMuontra.BackgroundColor = System.Drawing.Color.White;
+            this.dtMuontra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtMuontra.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dtMuontra.Location = new System.Drawing.Point(0, 286);
+            this.dtMuontra.Name = "dtMuontra";
+            this.dtMuontra.Size = new System.Drawing.Size(813, 217);
+            this.dtMuontra.TabIndex = 15;
+            this.dtMuontra.SelectionChanged += new System.EventHandler(this.dtMuontra_SelectionChanged);
             // 
             // dtp_ngaymuon
             // 
@@ -273,6 +276,16 @@
             this.dtp_hantra.Size = new System.Drawing.Size(230, 20);
             this.dtp_hantra.TabIndex = 30;
             // 
+            // bntClear
+            // 
+            this.bntClear.Location = new System.Drawing.Point(457, 17);
+            this.bntClear.Name = "bntClear";
+            this.bntClear.Size = new System.Drawing.Size(75, 23);
+            this.bntClear.TabIndex = 4;
+            this.bntClear.Text = "Clear";
+            this.bntClear.UseVisualStyleBackColor = true;
+            this.bntClear.Click += new System.EventHandler(this.bntClear_Click);
+            // 
             // frmMuontra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -284,17 +297,17 @@
             this.Controls.Add(this.dtp_ngaymuon);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.txtb_nxb);
+            this.Controls.Add(this.txtb_tensach);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.txtb_theloai);
+            this.Controls.Add(this.txtb_masach);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtb_ten);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtb_id);
+            this.Controls.Add(this.txtb_cmnd);
             this.Controls.Add(this.grb1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dtMuontra);
             this.DoubleBuffered = true;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(829, 541);
@@ -305,7 +318,7 @@
             this.Load += new System.EventHandler(this.frmMuontra_Load);
             this.grb1.ResumeLayout(false);
             this.grb1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtMuontra)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -315,9 +328,9 @@
 
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtb_nxb;
+        private System.Windows.Forms.TextBox txtb_tensach;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtb_theloai;
+        private System.Windows.Forms.TextBox txtb_masach;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtb_ten;
@@ -329,10 +342,11 @@
         private System.Windows.Forms.TextBox txtb_tim;
         private System.Windows.Forms.ComboBox cb_tim;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtb_id;
+        private System.Windows.Forms.TextBox txtb_cmnd;
         private System.Windows.Forms.GroupBox grb1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dtMuontra;
         private System.Windows.Forms.DateTimePicker dtp_ngaymuon;
         private System.Windows.Forms.DateTimePicker dtp_hantra;
+        private System.Windows.Forms.Button bntClear;
     }
 }
