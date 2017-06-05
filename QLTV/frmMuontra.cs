@@ -88,7 +88,17 @@ namespace QLTV
         //THÊM THÔNG TIN MƯỢN TRẢ MỚI.
         private void btn_them_Click(object sender, EventArgs e)
         {
-
+            mt.cmnd = cb_cmnd.SelectedItem.ToString();
+            mt.tendocgia = txtb_ten.Text;
+            mt.masach = cb_masach.SelectedItem.ToString();
+            mt.tensach = txtb_tensach.Text;
+            mt.ngaymuon = dtp_ngaymuon.Value.ToString("MM-dd-yyyy");
+            mt.ngaytra = dtp_hantra.Value.ToString("MM-dd-yyyy");
+            if (dtp_ngaymuon.Value > dtp_hantra.Value)
+                MessageBox.Show("Sai ngày mượn trả!");
+            else
+                mt.Add(mt);
+            frmMuontra_Load(sender, e);
         }
 
         //SỬA THÔNG TIN MƯỢN TRẢ ĐÃ CHỌN.

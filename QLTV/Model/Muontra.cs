@@ -53,5 +53,21 @@ namespace QLTV.Model
             con.Close();
         }
 
+        public void Add(Muontra mt)
+        {
+            if (con.State != ConnectionState.Open)
+                con.Open();
+            SqlCommand sc = new SqlCommand("them_muontra", con);
+            sc.Parameters.Add(new SqlParameter("ten", mt.tendocgia));
+            sc.Parameters.Add(new SqlParameter("cmnd", mt.cmnd));
+            sc.Parameters.Add(new SqlParameter("tensach", mt.tensach));
+            sc.Parameters.Add(new SqlParameter("masach", mt.masach));
+            sc.Parameters.Add(new SqlParameter("ngaymuon", mt.ngaymuon));
+            sc.Parameters.Add(new SqlParameter("hantra", mt.ngaytra));
+            sc.CommandType = CommandType.StoredProcedure;
+            sc.ExecuteNonQuery();
+            con.Close();
+        }
+
     }
 }
