@@ -45,6 +45,7 @@ namespace QLTV
 
         private void frmMuontra_Load(object sender, EventArgs e)
         {
+            Muontra_hienthi();
 
         }
 

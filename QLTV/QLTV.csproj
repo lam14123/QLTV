@@ -66,6 +66,7 @@
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Docgia.cs" />
+    <Compile Include="Model\Muontra.cs" />
     <Compile Include="Model\Sach.cs" />
     <Compile Include="frmMuontra.cs">
       <SubType>Form</SubType>
