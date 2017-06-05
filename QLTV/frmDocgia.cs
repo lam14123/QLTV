@@ -41,7 +41,8 @@ namespace QLTV
         {
             txtb_cmnd.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
             txtb_ten.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            dateTimePicker1.Value = DateTime.Parse(dataGridView1.CurrentRow.Cells[2].Value.ToString());
+            if (dataGridView1.CurrentRow.Cells[2].Value.ToString() != "")
+                dateTimePicker1.Value = DateTime.Parse(dataGridView1.CurrentRow.Cells[2].Value.ToString());
             rtxtb_diachi.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
             if (dataGridView1.CurrentRow.Cells[4].Value.ToString() == "Nam")
                 rbtn_nam.Checked = true;
@@ -81,7 +82,31 @@ namespace QLTV
         //THÊM ĐỘC GIẢ MỚI.
         private void btn_them_Click(object sender, EventArgs e)
         {
-
+            Docgia dg = new Docgia();
+            foreach (var item in dg.Show())
+            {
+                if (txtb_cmnd.Text == "" || txtb_cmnd.Text == item.cmnd)
+                {
+                    MessageBox.Show("Sai cmnd!");
+                }
+                else
+                {
+                    dg.cmnd = txtb_cmnd.Text;
+                }
+            }
+            
+            dg.ten = txtb_ten.Text;
+            dg.ngaysinh = dateTimePicker1.Value.ToString("MM-dd-yyyy");
+            dg.diachi = rtxtb_diachi.Text;
+            if (rbtn_nam.Checked == true)
+                dg.gioitinh = "Nam";
+            else
+                dg.gioitinh = "Nữ";
+            dg.taikhoan = txtb_taikhoan.Text;
+            dg.matkhau = txtb_matkhau.Text;
+            dg.Add(dg);
+            MessageBox.Show("Thêm mới thành công!");
+            frmDocgia_Load(sender, e);
         }
 
         //CẬP NHẬT THÔNG TIN ĐỘC GIẢ ĐÃ CHỌN.

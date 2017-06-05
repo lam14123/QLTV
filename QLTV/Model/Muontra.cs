@@ -10,7 +10,7 @@ namespace QLTV.Model
 {
     class Muontra
     {
-        SqlConnection con = new SqlConnection("server=HP6460B-PC\\SQLEXPRESS;database=QLTV;integrated security=SSPI");
+        SqlConnection con = new SqlConnection("Data Source=QUYETTHANG;Initial Catalog=QLTV;Integrated Security=True");
     
         public string tendocgia { get; set; }
         public string cmnd { get; set; }

@@ -14,8 +14,8 @@ namespace QLTV
 {
     public partial class frmSach : Form
     {
-        //SqlConnection con = new SqlConnection("Data Source=QUYETTHANG;Initial Catalog=QLTV;Integrated Security=True");
-        SqlConnection con = new SqlConnection("server=HP6460B-PC\\SQLEXPRESS;database=QLTV;integrated security=SSPI");
+        SqlConnection con = new SqlConnection("Data Source=QUYETTHANG;Initial Catalog=QLTV;Integrated Security=True");
+       // SqlConnection con = new SqlConnection("server=HP6460B-PC\\SQLEXPRESS;database=QLTV;integrated security=SSPI");
 
         public frmSach()
         {
@@ -89,7 +89,30 @@ namespace QLTV
         //THÊM ĐẦU SÁCH MỚI.
         private void btn_them_Click(object sender, EventArgs e)
         {
-
+            Sach sc = new Sach();
+            foreach(var item in sc.Show())
+            {
+                if (txtb_id.Text == "" || txtb_id.Text == item.id)
+                {
+                    MessageBox.Show("Sai mã!");
+                }
+                else
+                {
+                    sc.id = txtb_id.Text;
+                }
+            }
+            
+            sc.ten = txtb_ten.Text;
+            if (txtb_soluong.Text != "")
+                sc.soluong = int.Parse(txtb_soluong.Text);
+            else
+                sc.soluong = 0;
+            sc.tacgia = txtb_tacgia.Text;
+            sc.theloai = txtb_theloai.Text;
+            sc.nxb = txtb_nxb.Text;
+            sc.Add(sc);
+            MessageBox.Show("Thêm mới thành công!");
+            frmSach_Load(sender, e);
         }
 
         //CẬP NHẬT LẠI THÔNG TIN ĐẦU SÁCH ĐÃ CHỌN.

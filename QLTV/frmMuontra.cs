@@ -18,7 +18,7 @@ namespace QLTV
         Sach sc = new Sach();
         Docgia dg = new Docgia();
 
-        SqlConnection con = new SqlConnection("server=HP6460B-PC\\SQLEXPRESS;database=QLTV;integrated security=SSPI");
+        SqlConnection con = new SqlConnection("Data Source=QUYETTHANG;Initial Catalog=QLTV;Integrated Security=True");
         public frmMuontra()
         {
             InitializeComponent();
@@ -134,6 +134,16 @@ namespace QLTV
                     break;
                 }
             }
+            
+        }
+
+        private void grb1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cb_masach_SelectedIndexChanged(object sender, EventArgs e)
+        {
             foreach (var item in sc.Show())
             {
                 if (item.id == cb_masach.Text)

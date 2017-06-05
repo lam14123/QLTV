@@ -61,9 +61,9 @@
             this.label8.ForeColor = System.Drawing.Color.DarkOrchid;
             this.label8.Location = new System.Drawing.Point(280, 239);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(245, 29);
+            this.label8.Size = new System.Drawing.Size(242, 29);
             this.label8.TabIndex = 29;
-            this.label8.Text = "Danh sách đầu sách";
+            this.label8.Text = "Danh sách mượn trả";
             // 
             // label7
             // 
@@ -233,6 +233,7 @@
             this.grb1.Size = new System.Drawing.Size(813, 50);
             this.grb1.TabIndex = 16;
             this.grb1.TabStop = false;
+            this.grb1.Enter += new System.EventHandler(this.grb1_Enter);
             // 
             // datagridview1
             // 
@@ -240,7 +241,7 @@
             this.datagridview1.BackgroundColor = System.Drawing.Color.White;
             this.datagridview1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datagridview1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.datagridview1.Location = new System.Drawing.Point(0, 286);
+            this.datagridview1.Location = new System.Drawing.Point(0, 285);
             this.datagridview1.Name = "datagridview1";
             this.datagridview1.Size = new System.Drawing.Size(813, 217);
             this.datagridview1.TabIndex = 15;
@@ -276,6 +277,7 @@
             this.cb_masach.Name = "cb_masach";
             this.cb_masach.Size = new System.Drawing.Size(229, 21);
             this.cb_masach.TabIndex = 31;
+            this.cb_masach.SelectedIndexChanged += new System.EventHandler(this.cb_masach_SelectedIndexChanged);
             // 
             // frmMuontra
             // 
@@ -283,7 +285,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::QLTV.Properties.Resources.background_14;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(813, 503);
+            this.ClientSize = new System.Drawing.Size(813, 502);
             this.Controls.Add(this.cb_masach);
             this.Controls.Add(this.cb_cmnd);
             this.Controls.Add(this.dtp_hantra);
