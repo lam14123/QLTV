@@ -11,7 +11,7 @@ namespace QLTV.Model
     class Muontra
     {
         SqlConnection con = new SqlConnection("server=HP6460B-PC\\SQLEXPRESS;database=QLTV;integrated security=SSPI");
-     //   public int stt { get; set; }
+    
         public string tendocgia { get; set; }
         public string cmnd { get; set; }
         public string tensach  { get; set; }
@@ -32,12 +32,12 @@ namespace QLTV.Model
             foreach (DataRow row in dt.Rows)
             {
                 Muontra muontra = new Muontra();
-                muontra.cmnd = row[0].ToString();
                 muontra.tendocgia = row[1].ToString();
-                muontra.ngaymuon = row[2].ToString();
-                muontra.masach = row[3].ToString();
-                muontra.tensach = row[4].ToString();
-                muontra.ngaytra = row[5].ToString();
+                muontra.cmnd = row[2].ToString();
+                muontra.tensach = row[3].ToString();
+                muontra.masach = row[4].ToString();
+                muontra.ngaymuon = row[5].ToString();
+                muontra.ngaytra = row[6].ToString();
                 lst.Add(muontra);
             }
             con.Close();

@@ -32,7 +32,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtb_tensach = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtb_masach = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtb_ten = new System.Windows.Forms.TextBox();
@@ -44,14 +43,14 @@
             this.txtb_tim = new System.Windows.Forms.TextBox();
             this.cb_tim = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtb_cmnd = new System.Windows.Forms.TextBox();
             this.grb1 = new System.Windows.Forms.GroupBox();
-            this.dtMuontra = new System.Windows.Forms.DataGridView();
+            this.datagridview1 = new System.Windows.Forms.DataGridView();
             this.dtp_ngaymuon = new System.Windows.Forms.DateTimePicker();
             this.dtp_hantra = new System.Windows.Forms.DateTimePicker();
-            this.bntClear = new System.Windows.Forms.Button();
+            this.cb_cmnd = new System.Windows.Forms.ComboBox();
+            this.cb_masach = new System.Windows.Forms.ComboBox();
             this.grb1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtMuontra)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datagridview1)).BeginInit();
             this.SuspendLayout();
             // 
             // label8
@@ -98,13 +97,6 @@
             this.label6.TabIndex = 25;
             this.label6.Text = "Tên Sách";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtb_masach
-            // 
-            this.txtb_masach.Location = new System.Drawing.Point(507, 96);
-            this.txtb_masach.Name = "txtb_masach";
-            this.txtb_masach.Size = new System.Drawing.Size(229, 20);
-            this.txtb_masach.TabIndex = 24;
             // 
             // label5
             // 
@@ -164,7 +156,7 @@
             // 
             // btn_xoa
             // 
-            this.btn_xoa.Location = new System.Drawing.Point(731, 16);
+            this.btn_xoa.Location = new System.Drawing.Point(691, 16);
             this.btn_xoa.Name = "btn_xoa";
             this.btn_xoa.Size = new System.Drawing.Size(75, 23);
             this.btn_xoa.TabIndex = 3;
@@ -174,7 +166,7 @@
             // 
             // btn_sua
             // 
-            this.btn_sua.Location = new System.Drawing.Point(638, 16);
+            this.btn_sua.Location = new System.Drawing.Point(598, 16);
             this.btn_sua.Name = "btn_sua";
             this.btn_sua.Size = new System.Drawing.Size(75, 23);
             this.btn_sua.TabIndex = 3;
@@ -184,7 +176,7 @@
             // 
             // btn_them
             // 
-            this.btn_them.Location = new System.Drawing.Point(542, 16);
+            this.btn_them.Location = new System.Drawing.Point(502, 16);
             this.btn_them.Name = "btn_them";
             this.btn_them.Size = new System.Drawing.Size(75, 23);
             this.btn_them.TabIndex = 3;
@@ -226,17 +218,9 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Tìm kiếm";
             // 
-            // txtb_cmnd
-            // 
-            this.txtb_cmnd.Location = new System.Drawing.Point(151, 96);
-            this.txtb_cmnd.Name = "txtb_cmnd";
-            this.txtb_cmnd.Size = new System.Drawing.Size(231, 20);
-            this.txtb_cmnd.TabIndex = 18;
-            // 
             // grb1
             // 
             this.grb1.BackColor = System.Drawing.Color.Transparent;
-            this.grb1.Controls.Add(this.bntClear);
             this.grb1.Controls.Add(this.btn_xoa);
             this.grb1.Controls.Add(this.btn_sua);
             this.grb1.Controls.Add(this.btn_them);
@@ -250,17 +234,17 @@
             this.grb1.TabIndex = 16;
             this.grb1.TabStop = false;
             // 
-            // dtMuontra
+            // datagridview1
             // 
-            this.dtMuontra.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dtMuontra.BackgroundColor = System.Drawing.Color.White;
-            this.dtMuontra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtMuontra.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dtMuontra.Location = new System.Drawing.Point(0, 286);
-            this.dtMuontra.Name = "dtMuontra";
-            this.dtMuontra.Size = new System.Drawing.Size(813, 217);
-            this.dtMuontra.TabIndex = 15;
-            this.dtMuontra.SelectionChanged += new System.EventHandler(this.dtMuontra_SelectionChanged);
+            this.datagridview1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.datagridview1.BackgroundColor = System.Drawing.Color.White;
+            this.datagridview1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.datagridview1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.datagridview1.Location = new System.Drawing.Point(0, 286);
+            this.datagridview1.Name = "datagridview1";
+            this.datagridview1.Size = new System.Drawing.Size(813, 217);
+            this.datagridview1.TabIndex = 15;
+            this.datagridview1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridview1_CellClick);
             // 
             // dtp_ngaymuon
             // 
@@ -276,15 +260,22 @@
             this.dtp_hantra.Size = new System.Drawing.Size(230, 20);
             this.dtp_hantra.TabIndex = 30;
             // 
-            // bntClear
+            // cb_cmnd
             // 
-            this.bntClear.Location = new System.Drawing.Point(457, 17);
-            this.bntClear.Name = "bntClear";
-            this.bntClear.Size = new System.Drawing.Size(75, 23);
-            this.bntClear.TabIndex = 4;
-            this.bntClear.Text = "Clear";
-            this.bntClear.UseVisualStyleBackColor = true;
-            this.bntClear.Click += new System.EventHandler(this.bntClear_Click);
+            this.cb_cmnd.FormattingEnabled = true;
+            this.cb_cmnd.Location = new System.Drawing.Point(151, 95);
+            this.cb_cmnd.Name = "cb_cmnd";
+            this.cb_cmnd.Size = new System.Drawing.Size(231, 21);
+            this.cb_cmnd.TabIndex = 31;
+            this.cb_cmnd.SelectedIndexChanged += new System.EventHandler(this.cb_cmnd_SelectedIndexChanged);
+            // 
+            // cb_masach
+            // 
+            this.cb_masach.FormattingEnabled = true;
+            this.cb_masach.Location = new System.Drawing.Point(507, 95);
+            this.cb_masach.Name = "cb_masach";
+            this.cb_masach.Size = new System.Drawing.Size(229, 21);
+            this.cb_masach.TabIndex = 31;
             // 
             // frmMuontra
             // 
@@ -293,21 +284,21 @@
             this.BackgroundImage = global::QLTV.Properties.Resources.background_14;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(813, 503);
+            this.Controls.Add(this.cb_masach);
+            this.Controls.Add(this.cb_cmnd);
             this.Controls.Add(this.dtp_hantra);
             this.Controls.Add(this.dtp_ngaymuon);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtb_tensach);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.txtb_masach);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtb_ten);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtb_cmnd);
             this.Controls.Add(this.grb1);
-            this.Controls.Add(this.dtMuontra);
+            this.Controls.Add(this.datagridview1);
             this.DoubleBuffered = true;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(829, 541);
@@ -318,7 +309,7 @@
             this.Load += new System.EventHandler(this.frmMuontra_Load);
             this.grb1.ResumeLayout(false);
             this.grb1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtMuontra)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datagridview1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -330,7 +321,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtb_tensach;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtb_masach;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtb_ten;
@@ -342,11 +332,11 @@
         private System.Windows.Forms.TextBox txtb_tim;
         private System.Windows.Forms.ComboBox cb_tim;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtb_cmnd;
         private System.Windows.Forms.GroupBox grb1;
-        private System.Windows.Forms.DataGridView dtMuontra;
+        private System.Windows.Forms.DataGridView datagridview1;
         private System.Windows.Forms.DateTimePicker dtp_ngaymuon;
         private System.Windows.Forms.DateTimePicker dtp_hantra;
-        private System.Windows.Forms.Button bntClear;
+        private System.Windows.Forms.ComboBox cb_cmnd;
+        private System.Windows.Forms.ComboBox cb_masach;
     }
 }
